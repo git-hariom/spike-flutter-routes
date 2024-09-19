@@ -1,16 +1,73 @@
-# castielflutter
+# Introduction
 
-A new Flutter project.
+This page will guide us to create routes in Flutter
 
-## Getting Started
+# Links And Refs
 
-This project is a starting point for a Flutter application.
+https://hariomsinha.notion.site/Creating-Routes-in-Flutter-abca7087ba4c4e95b4bd82e83e8e3275?pvs=4
 
-A few resources to get you started if this is your first Flutter project:
+# Named Routes
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Create two pages and specify the Routes in the router in the MaterialApp.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```jsx
+import 'package:castielflutter/HomePage.dart';
+import 'package:castielflutter/SecondPage.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+      initialRoute: '/native',
+      routes: {
+        '/native': (context) => const HomePage(),
+        '/native/details': (context) => const SecondPage(),
+      },
+    ));
+}
+```
+
+```jsx
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+            title: const Text('First Page'),
+        ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+                Navigator.pushNamed(context, '/native/details');
+            },
+        backgroundColor: Colors.green,
+    ),
+    );
+  }
+}
+```
+
+```jsx
+import 'package:flutter/material.dart';
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Page'),
+      ),
+    );
+  }
+}
+```
+
+# Links And Refs
+
+```jsx
+https://github.com/git-hariom/spike-flutter-routes
+```
